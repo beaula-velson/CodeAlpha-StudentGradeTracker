@@ -1,93 +1,103 @@
 import java.util.Scanner;
 
+class Student {
+    String name;
+    int mark;
+
+    Student(String name, int mark) {
+        this.name = name;
+        this.mark = mark;
+    }
+
+    String calculateGrade() {
+        if (mark >= 90) {
+            return "A";
+        } else if (mark >= 80) {
+            return "B";
+        } else if (mark >= 70) {
+            return "C";
+        } else if (mark >= 60) {
+            return "D";
+        } else {
+            return "Fail";
+        }
+    }
+
+    void displayDetails() {
+        System.out.println("Name: " + name);
+        System.out.println("Mark: " + mark);
+        System.out.println("Grade: " + calculateGrade());
+    }
+}
+
 public class StudentGradeTracker {
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Enter number of students: ");
         int n = sc.nextInt();
-        while(n <= 0){
+
+        while (n <= 0) {
             System.out.println("Invalid number of students!");
             System.out.print("Enter number of students again: ");
             n = sc.nextInt();
         }
+
         sc.nextLine();
 
-        String[] names = new String[n];
-        int[] marks = new int[n];
+        Student[] students = new Student[n];
         int total = 0;
-        for (int i = 0; i < n; i++) {
 
+        for (int i = 0; i < n; i++) {
             System.out.print("Enter student name: ");
-            names[i] = sc.nextLine();
+            String name = sc.nextLine();
 
             System.out.print("Enter mark: ");
-            marks[i] = sc.nextInt();
+            int mark = sc.nextInt();
 
-            while (marks[i] < 0 || marks[i] > 100) {
-            System.out.println("Invalid! Enter marks between 0 and 100.");
-            System.out.print("Enter mark again: ");
-            marks[i] = sc.nextInt();
+            while (mark < 0 || mark > 100) {
+                System.out.println("Invalid! Marks must be 0 to 100.");
+                System.out.print("Enter mark again: ");
+                mark = sc.nextInt();
             }
-            total = total + marks[i];
+
             sc.nextLine();
+
+            students[i] = new Student(name, mark);
+            total += mark;
         }
-        int highest = marks[0];
-        int topIndex = 0;
-        int lowest = marks[0];
-        int lowestIndex = 0;
-        for (int i = 0; i < n; i++) {
-            if (marks[i] > highest) {
-              highest = marks[i];
-               topIndex = i;
-             }
-        }
-        for (int i = 0; i < n; i++) {
-            if (marks[i] < lowest) {
-              lowest = marks[i];
-               lowestIndex = i;
-             }
-        }
-           
-            
+
+        int highest = students[0].mark;
+        int lowest = students[0].mark;
+        String topStudent = students[0].name;
+        String lowestStudent = students[0].name;
+
         System.out.println("\n--- Student Details ---");
 
         for (int i = 0; i < n; i++) {
-            System.out.println("Name: " + names[i]);
-            System.out.println("Mark: " + marks[i]);
-            if(marks[i] >= 90){
-                System.out.println("Grade:  A" );
-            }
-            else if(marks[i] >= 80 ){
-                System.out.println("Grade:  B" );
-            }
-            else if(marks[i] >= 70 ){
-                System.out.println("Grade:  C" );
-            }
-            else if(marks[i] >= 60 ){
-                System.out.println("Grade:  D" );
-            }
-
-            else{
-                System.out.println("Grade:  Fail" );}
-
+            students[i].displayDetails();
             System.out.println();
+
+            if (students[i].mark > highest) {
+                highest = students[i].mark;
+                topStudent = students[i].name;
+            }
+
+            if (students[i].mark < lowest) {
+                lowest = students[i].mark;
+                lowestStudent = students[i].name;
+            }
         }
-           
-        
-        System.out.println( );
-        System.out.println("---- Class Summary ----"); 
 
         double average = (double) total / n;
 
+        System.out.println("--- Class Summary ---");
         System.out.println("Total Marks: " + total);
-        System.out.println("Average Mark: " + average);  
-        System.out.println("Top Student: " + names[topIndex]);
-        System.out.println("Highest Mark: " + highest); 
-        System.out.println("Lowest Student: " + names[lowestIndex]);
-        System.out.println("Lowest Mark: " + lowest);   
-             
+        System.out.printf("Average Mark: %.2f%n", average);
+        System.out.println("Top Student: " + topStudent);
+        System.out.println("Highest Mark: " + highest);
+        System.out.println("Lowest Student: " + lowestStudent);
+        System.out.println("Lowest Mark: " + lowest);
 
         sc.close();
     }
