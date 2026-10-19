@@ -1,10 +1,10 @@
-Student Grade Tracker
+# Student Grade Tracker
 
-About the Project
+## About the Project
 
-Student Grade Tracker is a beginner-friendly Java console application that stores student names and marks, calculates grades, and displays class statistics.
+Student Grade Tracker is a beginner-friendly Java console application that stores student names and marks, calculates grades, and displays class statistics. This project demonstrates basic Java programming and Object-Oriented Programming (OOP) concepts.
 
-Features
+## Features
 
 - Enter student names and marks
 - Calculate grades based on marks
@@ -12,25 +12,37 @@ Features
 - Find the student with the highest marks
 - Find the student with the lowest marks
 - Validate student count and marks
-- Display results in a neat format
+- Display student details and class summary
 
-Technologies Used
+## Technologies Used
 
 - Java
 - Scanner class
 - Arrays
 - Loops and conditional statements
+- Classes, constructors, objects, and methods
 
-How to Run
+## How to Run
 
 1. Install the Java JDK.
 2. Open the project folder in VS Code.
 3. Open the terminal.
 4. Compile the program:
-   "javac StudentGradeTracker.java"
+
+   ```bash
+   javac StudentGradeTracker.java
+   ```
+
 5. Run the program:
-   "java StudentGradeTracker"
 
-Author
+   ```bash
+   java StudentGradeTracker
+   ```
 
-Java Programming Practice Project
+## Internship
+
+CodeAlpha Java Programming Internship
+
+## Author
+
+Beaula V.
