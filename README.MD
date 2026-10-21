@@ -39,10 +39,6 @@ Student Grade Tracker is a beginner-friendly Java console application that store
    java StudentGradeTracker
    ```
 
-## Internship
-
-CodeAlpha Java Programming Internship
-
 ## Author
 
 Beaula V.
